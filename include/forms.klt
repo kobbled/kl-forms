@@ -1,0 +1,8 @@
+%ifndef forms_t
+%define forms_t
+
+CONST
+
+VAR
+
+%endif -- forms_t

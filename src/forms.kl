@@ -1,0 +1,73 @@
+PROGRAM forms
+%NOBUSYLAMP
+%COMMENT = 'forms lib'
+%NOLOCKGROUP
+%NOPAUSE = COMMAND + TPENABLE + ERROR
+
+%include klevccdf.kl
+%include klevkeys.kl
+%include klevkmsk.kl
+
+%include errors.klt
+--include forms.klt
+
+%include errors.klh
+%include forms.klh
+
+--private
+ROUTINE fshow(dict_name : STRING; ele_number : INTEGER; value_array : ARRAY OF STRING) : INTEGER
+  VAR
+    inact_array : ARRAY[1] OF BOOLEAN
+    change_array : ARRAY[1] OF BOOLEAN
+    def_item : INTEGER
+    term_char : INTEGER
+    status : INTEGER
+  BEGIN
+    def_item = 1
+    DISCTRL_FORM (dict_name, ele_number, value_array, inact_array,
+                change_array, kc_func_key, def_item, term_char, status)
+    RETURN(status)
+  END fshow
+
+--public
+
+ROUTINE forms__load
+  VAR
+    status : INTEGER
+  BEGIN
+    --check if dictionary is loaded
+    -- ** assume ele_number is always 0. This may not be true.
+    CHECK_DICT(dict_name, 0, status)
+    IF status <> 0 THEN
+      --try to load .tx file from MF2 drive
+      KCL('CD MF2:', status)
+      KCL('LOAD FORM ' + filename, status)
+      IF status <> 0 THEN
+        karelError(status,'Could not load form '+ filename, ER_ABORT)
+        RETURN(FALSE)
+      ENDIF
+    ENDIF
+
+    RETURN(TRUE)
+
+  END forms__load
+
+
+ROUTINE forms__show
+  VAR
+    device_stat : INTEGER --tp_panel or crt_panel
+    status, entry : INTEGER
+  BEGIN
+    --set to show to TP_PANEL
+    device_stat = tp_panel
+    FORCE_SPMENU(device_stat, SPI_TPUSER2, 1) -- forces the TP USER2
+
+    --Displays form named FORM1
+    -- ** assume ele_number is always 0. This may not be true.
+    status = fshow(dict_name, 0, value_array)
+    --status = fshow(dict_name, 0, BYNAME(prg_name, varlist_name, entry))
+
+  END forms__show
+
+BEGIN
+END forms

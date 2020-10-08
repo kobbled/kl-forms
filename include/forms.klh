@@ -1,0 +1,16 @@
+%ifndef forms_h
+%define forms_h
+
+%include namespace.m
+
+%define prog_name forms
+%define prog_name_alias form
+
+-- namespaced members in format <prog_name_alias>__<func_name>
+declare_function(prog_name,load,prog_name_alias,load)
+ROUTINE forms__load(filename : STRING; dict_name : STRING) : BOOLEAN FROM forms
+declare_function(prog_name,show,prog_name_alias,show)
+ROUTINE forms__show(dict_name : STRING; value_array : ARRAY OF STRING) FROM forms
+--ROUTINE forms__show(dict_name : STRING; prg_name : STRING ; varlist_name : STRING) FROM forms
+
+%endif --forms_h

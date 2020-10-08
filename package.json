@@ -1,0 +1,18 @@
+{
+  "manver" : "1",
+  "project" : "forms",
+  "description" : "Helper funcitions for dealing with forms and dictionaries",
+  "version" : "0.0.1",
+  "license" : "Apache 2.0",
+  "author" : "kobbled",
+  "source" : [
+    "src/forms.kl"
+  ],
+  "includes" : [
+    "include"
+  ],
+  "depends" : [
+    "errors",
+    "ktransw-macros"
+  ]
+}

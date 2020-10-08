@@ -1,0 +1,20 @@
+#ifndef fkeys_h
+#define fkeys_h
+
+#mode push
+#mode string QQQ "`" "`" "\\"
+#define tf_keys `$-,bool_fkey
+    "FALSE" &new_line * F5 key label, value will be set FALSE
+    "TRUE" &new_line * F4 key label, value will be set TRUE`
+
+#define IO_keys `$-,dout_fkey
+    "OFF" &new_line * F5 key label, value will be set to OFF
+    "ON" &new_line * F4 key label, value will be set to ON`
+
+#define sim_keys `$-,sim_fkey
+    "UNSIM" &new_line * F5 key label, port will be unsimulated
+    "SIMULATE" &new_line * F4 key label, port will be simulated`
+
+#mode pop
+
+#endif * fkeys_h
