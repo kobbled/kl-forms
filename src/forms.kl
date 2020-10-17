@@ -4,12 +4,12 @@ PROGRAM forms
 %NOLOCKGROUP
 %NOPAUSE = COMMAND + TPENABLE + ERROR
 
-%include klevccdf.kl
-%include klevkeys.kl
+--include klevccdf.kl
+--include klevkeys.kl
 %include klevkmsk.kl
 
 %include errors.klt
---include forms.klt
+%include forms.klt
 
 %include errors.klh
 %include forms.klh
@@ -17,10 +17,7 @@ PROGRAM forms
 --private
 ROUTINE fshow(dict_name : STRING; ele_number : INTEGER; value_array : ARRAY OF STRING) : INTEGER
   VAR
-    inact_array : ARRAY[1] OF BOOLEAN
-    change_array : ARRAY[1] OF BOOLEAN
     def_item : INTEGER
-    term_char : INTEGER
     status : INTEGER
   BEGIN
     def_item = 1

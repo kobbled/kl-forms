@@ -1,8 +1,9 @@
 %ifndef forms_t
 %define forms_t
 
-CONST
-
 VAR
+  inact_array : ARRAY[20] OF BOOLEAN
+  change_array : ARRAY[20] OF BOOLEAN
+  term_char : INTEGER
 
 %endif -- forms_t
