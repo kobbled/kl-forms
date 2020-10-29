@@ -49,6 +49,19 @@ ROUTINE forms__load
 
   END forms__load
 
+ROUTINE forms__delete
+  VAR
+    status : INTEGER
+  BEGIN
+    REMOVE_DICT(dict_name, dp_default, status)
+    IF status <> 0 THEN
+      karelError(status,'Could not delete form '+ dict_name, ER_ABORT)
+      RETURN(FALSE)
+    ENDIF
+
+    RETURN(TRUE)
+  END forms__delete
+
 
 ROUTINE forms__show
   VAR
