@@ -13,6 +13,11 @@
   ],
   "depends" : [
     "errors",
+    "TPElib",
+    "registers",
     "ktransw-macros"
+  ],
+  "tp-interfaces" : [
+    {"routine" : "forms__delete", "program_name" : "delete_form"}
   ]
 }

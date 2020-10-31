@@ -1,0 +1,16 @@
+PROGRAM delete_form
+%NOBUSYLAMP
+%NOLOCKGROUP
+
+VAR
+	out_reg : INTEGER
+	dict_name : STRING[32]
+%from tpe.klh %import get_string_arg,get_int_arg
+%from registers.klh %import set_boolean
+%from forms.klh %import delete
+
+BEGIN
+	dict_name = tpe__get_string_arg(1)
+	out_reg = tpe__get_int_arg(2)
+	registers__set_boolean(out_reg, forms__delete(dict_name))
+END delete_form
