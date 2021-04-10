@@ -5,7 +5,7 @@ PROGRAM delete_form
 VAR
 	out_reg : INTEGER
 	dict_name : STRING[32]
-%from tpe.klh %import get_string_arg,get_int_arg
+%from tpe.klh %import get_int_arg,get_string_arg
 %from registers.klh %import set_boolean
 %from forms.klh %import delete
 
